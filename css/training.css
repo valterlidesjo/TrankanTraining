@@ -1,0 +1,649 @@
+/* Utility classes */
+.flex{
+    display: flex;
+    gap: 1rem;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Baskervville SC", Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+@keyframes fade-in{
+    0% {opacity: 0;}
+    25% {opacity: 0.25;}
+    50% {opacity: 0.5;}
+    75% {opacity: 0.75;}
+    100% {opacity: 1;}
+}
+
+/* new nav bar responsive */
+.navbar-container{
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-nav-toggle{
+    display: none;
+}
+.img-container{
+    margin: 2rem;
+    z-index: 10;
+}
+.img-container img{
+    height: 8svh;
+}
+.navbar-container button{
+    height: 5svh;
+}
+.primary-nav{
+    list-style: none;
+    background: hsl(0 0% 100% / 0.25);
+    backdrop-filter: blur(1rem);
+}
+.primary-nav a {
+    text-decoration: none;
+    color: black;
+}
+.primary-nav .menu-text{
+    font-size: 1.25em;
+    font-weight: 500;
+}
+.primary-nav .menu-text:hover {
+    text-decoration: none;
+    color: black;
+    font-size: 1.27em;
+    font-weight: 550;
+}
+.primary-nav a > div {
+    font-weight: 700;
+    margin-inline-end: 0.5em;
+    font-family: Helvetica, sans-serif;
+}
+
+@media (max-width: 35em){
+    .primary-nav{
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(25vh, 10rem) 2em;
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+    .primary-nav[data-visible="true"]{
+        transform: translateX(0%);
+    }
+    .mobile-nav-toggle{
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        width: 1.5rem;
+        border: 0;
+        aspect-ratio: 1;
+        top: 2rem;
+        right: 2rem;
+        z-index: 999;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+   
+    .mobile-nav-toggle.active {
+        transform: rotate(90deg);
+    }
+}
+
+@media (min-width: 35em){
+    .primary-nav a > div {
+        display: none;
+    }
+    .primary-nav{
+        padding: 2rem;
+    }
+}
+/*new navbar styling ends here*/
+
+/*support modal*/
+@media (min-width: 35em){
+    .support-modal-container{
+        display: none;
+        position: fixed; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .support-modal-container-2{
+        align-items: center;
+        justify-content: center;
+    } 
+    .support-modal-container-3{
+        width: 80vw;
+        height: 80svh;
+        background: black;
+        border-radius: 15px;
+        margin-top: 10svh;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .modal-header-container {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .modal-header {
+        font-size: 2em;
+        color: white;
+        text-align: center;
+        width: 100%;
+        text-decoration: underline;
+        margin-top: 3svh;
+    }
+
+
+    .close-modal {
+        position: absolute;
+        top: 10;
+        right: 0;
+        background: black;
+        color: white;
+        font-size: 1.5em;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .modal-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .modal-form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40vw;
+        height: 50svh;
+        margin-top: 8svh;
+    }
+
+    .modal-input-name,
+    .modal-input-mail,
+    textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .modal-image {
+        width: 15vw;
+        height: auto;
+        object-fit: cover;
+    }
+    .modal-submit-btn{
+        height: 10svh;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 35em) {
+    .support-modal-container{
+        display: none;
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto;  
+    }
+    .support-modal-container-2{
+        align-items: center;
+        justify-content: center;
+    } 
+    .support-modal-container-3 {
+        width: 90vw;
+        height: 80vh;
+        margin-top: 10svh;
+        background: black;
+        border-radius: 15px;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        animation: modalUp 3s;
+    }
+
+    .modal-header {
+        font-size: 3em;
+        margin-top: 2svh;
+        color: white;
+        text-align: center;
+        width: 100%;
+        text-decoration: underline;
+    }
+
+    .modal-header-container {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .close-modal {
+        top: 5px;
+        right: 5px;
+        font-size: 1.2em;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .form-container {
+        width: 80vw;
+        margin-top: 2svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-input-name,
+    .modal-input-mail,
+    textarea {
+        width: 90%;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .modal-submit-btn{
+        height: 7svh;
+        padding: 5px;
+    }
+
+    .modal-image {
+        display: none;
+    }
+    .modal-image-bottom{
+        display: flex;
+        width: 25vw;
+        height: auto;
+        object-fit: cover;
+    }
+   
+}
+/* support modal ends here*/
+
+
+
+
+
+
+
+
+
+@media (max-width: 35em){
+    
+.intro-img-container{
+    background: black;
+    align-items: center;
+    justify-content: center;
+    height: 100svh;
+    width: 100vw;
+}
+.top-intro-img-container, .bottom-intro-img-container{
+    display: none;
+}
+.intro-img{
+    align-items: center;
+    justify-content: center;
+}
+.intro-img img{
+    width: 70vw;
+
+}
+/* intro text part */
+.intro-container{
+    height: 100svh;
+    width: 100vw;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.intro-text-header{
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 700; 
+}
+.intro-text-container{
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+}
+/* intro text part ends here*/
+
+/* ronnie coleman */
+.site-container-1{
+    height: 100svh;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.site-text-header{
+    font-size: 1.2em;
+    font-weight: 700;  
+}
+.site-text-container{
+    flex-direction: column;
+}
+
+.site-video-container{
+    align-items: center;
+    justify-content: flex-start;
+}
+.site-video-container video{
+    width: 70vw;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+/* ronnie coleman ends here*/
+
+
+/* tren twins */
+.site-container-2{
+    height: 100svh;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column-reverse;
+}
+.site-text-header-2{
+    font-size: 1.2em;
+    font-weight: 700;  
+}
+.site-text-container-2{
+    flex-direction: column;
+    margin-bottom: -5svh;
+}
+
+.site-video-container-2{
+    align-items: center;
+    justify-content: flex-start;
+}
+.site-video-container-2 video{
+    width: 70vw;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+/* tren twins ends here*/
+
+/* arnold here */
+.site-container-3{
+    height: 100svh;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.site-text-header-3{
+    font-size: 1.2em;
+    font-weight: 700;  
+}
+.site-text-container-3{
+    flex-direction: column;
+    margin-bottom: -5svh;
+}
+
+.site-video-container-3{
+    align-items: center;
+    justify-content: flex-start;
+}
+.site-video-container-3 video{
+    width: 70vw;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+/* arnold ends here */
+
+.join-container{
+    height: 100svh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    background: black;
+}
+
+.join-btn-container{
+    align-items: center;
+    justify-content: center;
+}
+.join-btn{
+    font-size: 1.8em;
+    font-weight: 600;
+    padding: 0.7em;
+    border-radius: 20px;
+    cursor: pointer;
+    color: black;
+    background: white;
+}
+/*Contact part*/
+.contact-container{
+    height: 40svh;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-header-container{
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.contact-header{
+    font-size: 1.5em;
+}
+
+.support-btn{
+    padding: 0.5em;
+    border-radius: 10px;
+    border: none;
+}
+/*Contact part ends here*/
+
+}
+
+
+
+
+@media (min-width: 35em){
+    
+.intro-img-container{
+    background: black;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100svh;
+    width: 100vw;
+}
+.top-intro-img-container, .bottom-intro-img-container{
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100svh;
+}
+.small-intro-img{
+    height: 30svh;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+    animation: fade-in 3s forwards;
+}
+.intro-img{
+    align-items: center;
+    justify-content: center;
+}
+.intro-img img{
+    height: 70svh;
+}
+.intro-container{
+    height: 100svh;
+    width: 100vw;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.intro-text-header{
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: 700; 
+}
+.intro-text-container{
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+}
+/* ronnie coleman*/
+.site-container-1{
+    height: 100svh;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.site-text-header{
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.site-text-container{
+    flex-direction: column;
+}
+
+.site-video-container{
+    align-items: center;
+    justify-content: flex-start;
+}
+.site-video-container video{
+    width: 35vw;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+/* ronnie coleman ends here*/
+
+/* tren twins */
+.site-container-2{
+    height: 100svh;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.site-text-header-2{
+    font-size: 1.2em;
+    font-weight: 700;  
+}
+.site-text-container-2{
+    flex-direction: column;
+}
+
+.site-video-container-2{
+    align-items: center;
+    justify-content: flex-start;
+}
+.site-video-container-2 video{
+    width: 35vw;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+/* tren twins ends here*/
+
+/* arnold here */
+.site-container-3{
+    height: 100svh;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.site-text-header-3{
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.site-text-container-3{
+    flex-direction: column;
+}
+
+.site-video-container-3{
+    align-items: center;
+    justify-content: flex-start;
+}
+.site-video-container-3 video{
+    width: 35vw;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+/* arnold ends here */
+
+.join-container{
+    height: 100svh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    background: black;
+}
+
+.join-btn-container{
+    align-items: center;
+    justify-content: center;
+}
+.join-btn{
+    font-size: 1.8em;
+    font-weight: 600;
+    padding: 0.7em;
+    border-radius: 20px;
+    cursor: pointer;
+    color: black;
+    background: white;
+}
+.contact-container{
+    height: 40svh;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-header-container{
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.contact-header{
+    font-size: 1.5em;
+}
+
+.support-btn{
+    padding: 0.5em;
+    border-radius: 10px;
+    border: none;
+}
+
+}

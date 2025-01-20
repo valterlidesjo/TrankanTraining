@@ -1,0 +1,610 @@
+/* Utility classes */
+.flex{
+    display: flex;
+    gap: 1rem;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: "Baskervville SC", Arial, Helvetica, sans-serif;
+}
+
+@keyframes modalUp {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes modalDown {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+
+
+
+
+/* new nav bar responsive */
+.navbar-container{
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-nav-toggle{
+    display: none;
+}
+.img-container{
+    margin: 2rem;
+    z-index: 10;
+}
+.img-container img{
+    height: 8svh;
+}
+.navbar-container button{
+    height: 5svh;
+}
+.primary-nav{
+    list-style: none;
+    background: hsl(0 0% 100% / 0.25);
+    backdrop-filter: blur(1rem);
+}
+.primary-nav a {
+    text-decoration: none;
+    color: black;
+}
+.primary-nav .menu-text{
+    font-size: 1.25em;
+    font-weight: 500;
+}
+.primary-nav .menu-text:hover {
+    text-decoration: none;
+    color: black;
+    font-size: 1.27em;
+    font-weight: 550;
+}
+.primary-nav a > div {
+    font-weight: 700;
+    margin-inline-end: 0.5em;
+    font-family: Helvetica, sans-serif;
+}
+
+@media (max-width: 35em){
+    .primary-nav{
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(25vh, 10rem) 2em;
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+    .primary-nav[data-visible="true"]{
+        transform: translateX(0%);
+    }
+    .mobile-nav-toggle{
+        display: block;
+        position: absolute;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        width: 1.5rem;
+        border: 0;
+        aspect-ratio: 1;
+        top: 2rem;
+        right: 2rem;
+        z-index: 999;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+    .mobile-nav-toggle.active {
+        transform: rotate(90deg);
+    }
+    
+}
+
+@media (min-width: 35em){
+    .primary-nav a > div {
+        display: none;
+    }
+    .primary-nav{
+        padding: 2rem;
+    }
+
+}
+/*new navbar styling ends here*/
+
+@media (max-width: 35em){
+    .sign-up-container{
+        height: 80svh;
+        width: 100vw;
+        background: white;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20svh;
+    }
+    .sign-up-frame{
+        height: 80svh;
+        width: 80vw;
+        border-radius: 20px;
+        background: black;
+        flex-direction: column;
+    }
+    .sign-up-header-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up-header{
+        color: white;
+        font-size: 24px;
+    }
+    .account-text{
+        color: rgb(164, 154, 154);
+        font-size: 10px;
+    }
+    .account-text a{
+        color: white;
+        font-size: 10px;
+    }
+    .logo-img-container{
+        align-items: center;
+        justify-content: center;
+        padding: 1em;
+    }
+    .logo-img{
+        width: 10vw;
+    
+    }
+    .sign-up-input-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top:4svh ;
+    }
+    .sign-up-input-container form{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .input-1, .input-2{
+        width: 25vw;
+    }
+    .input-3, .input-4{
+        width: 53vw;
+    }
+    .submit-btn{
+        width: 53vw;
+        background: rgb(206, 206, 20);
+        color: black;
+        border: 0.5px solid black;
+    }
+    .line-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .line {
+        flex-grow: 1;
+        height: 1px;
+        background-color: white;
+    }
+    .line-text {
+        padding: 0 10px;
+        font-size: 16px;
+        color: white;
+        white-space: nowrap;
+    }
+    .sign-up-with-container{
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .sign-up-with-google{
+        align-items: center;
+        justify-content: space-evenly;
+        background: white;
+        border: 0.5px solid black;
+        width: 25vw;
+        height: 4svh;
+        border-radius: 2px;
+    }
+    .google img{
+        width: 5vw;
+    }
+    .sign-up-with-apple{
+        align-items: center;
+        justify-content: space-evenly;
+        background: white;
+        border: 0.5px solid black;
+        width: 25vw;
+        height: 4svh;
+        border-radius: 2px;
+    }
+    .apple img{
+        width: 3vw;
+    }
+    .apple, .google{
+        align-items: center;
+    }
+    .big-img-container{
+        display: none;
+    }
+    /*Contact part*/
+    .contact-container{
+        height: 40svh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-header-container{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .contact-header{
+        font-size: 1.5em;
+    }
+
+    .support-btn{
+        padding: 0.5em;
+        border-radius: 10px;
+        border: none;
+    } 
+    /*Contact part ends here*/
+    
+}
+
+.form-error{
+    color: red;
+    font-size: 20px;
+}
+.form-success{
+    color: green;
+    font-size: 20px;
+}
+
+
+
+@media (min-width: 35em){
+    .sign-up-container{
+        height: 80svh;
+        width: 100vw;
+        background: white;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-bottom: 20svh;
+    }
+    .big-img-container{
+        height: 80svh;
+        width: 35vw;
+        border: 1px solid black;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        border-radius: 15px;
+    }
+    .big-logo-img-container img{
+        width: 35vw;
+    }
+    .sign-up-frame{
+        height: 80svh;
+        width: 50vw;
+        border-radius: 20px;
+        background: black;
+        flex-direction: column;
+    }
+    .sign-up-header-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up-header{
+        color: white;
+        font-size: 30px;
+        margin-top: 5svh;
+    }
+    .account-text{
+        color: rgb(164, 154, 154);
+        font-size: 16px;
+    }
+    .account-text a{
+        color: white;
+        font-size: 16px;
+    }
+    .logo-img-container{
+      display: none;
+    }
+    
+    .sign-up-input-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top:4svh ;
+    }
+    .sign-up-input-container form{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .input-1, .input-2{
+        width: 20vw;
+    }
+    .input-3, .input-4{
+        width: 41.5vw;
+    }
+    .submit-btn{
+        width: 41.5vw;
+        height: 5svh;
+        background: rgb(206, 206, 20);
+        color: black;
+        border: 0.5px solid black;
+        border-radius: 2px;
+        font-size: 1.2em;
+    }
+    .line-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .line {
+        flex-grow: 1;
+        height: 1px;
+        background-color: white;
+    }
+    .line-text {
+        padding: 0 10px;
+        font-size: 16px;
+        color: white;
+        white-space: nowrap;
+    }
+    .sign-up-with-container{
+        align-items: center;
+        justify-content: center;
+        width: 50vw;
+    }
+    .sign-up-with-google{
+        align-items: center;
+        justify-content: space-evenly;
+        background: white;
+        border: 0.5px solid black;
+        border-radius: 2px;
+        width: 20vw;
+        height: 8svh;
+    }
+    .google img{
+        width: 5vw;
+    }
+    .sign-up-with-apple{
+        align-items: center;
+        justify-content: space-evenly;
+        background: white;
+        border: 0.5px solid black;
+        border-radius: 2px;
+        width: 20vw;
+        height: 8svh;
+    }
+    .apple img{
+        width: 3vw;
+    }
+    .apple, .google{
+        align-items: center;
+    }
+
+    /*Contact part*/
+    .contact-container{
+        height: 40svh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-header-container{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .contact-header{
+        font-size: 1.5em;
+    }
+
+    .support-btn{
+        padding: 0.5em;
+        border-radius: 10px;
+        border: none;
+    } 
+    /*Contact part ends here*/
+
+}
+
+
+
+/*support modal*/
+@media (min-width: 35em){
+    .support-modal-container{
+        display: none;
+        position: fixed; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .support-modal-container-2{
+        align-items: center;
+        justify-content: center;
+    } 
+    .support-modal-container-3{
+        width: 80vw;
+        height: 80svh;
+        background: black;
+        border-radius: 15px;
+        margin-top: 10svh;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .modal-header-container {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .modal-header {
+        font-size: 2em;
+        color: white;
+        text-align: center;
+        width: 100%;
+        text-decoration: underline;
+        margin-top: 3svh;
+    }
+
+
+    .close-modal {
+        position: absolute;
+        top: 10;
+        right: 0;
+        background: black;
+        color: white;
+        font-size: 1.5em;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .modal-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .modal-form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40vw;
+        height: 50svh;
+        margin-top: 8svh;
+    }
+
+    .modal-input-name,
+    .modal-input-mail,
+    textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .modal-image {
+        width: 15vw;
+        height: auto;
+        object-fit: cover;
+    }
+    .modal-submit-btn{
+        height: 10svh;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 35em) {
+    .support-modal-container{
+        display: none;
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto;  
+    }
+    .support-modal-container-2{
+        align-items: center;
+        justify-content: center;
+    } 
+    .support-modal-container-3 {
+        width: 90vw;
+        height: 80vh;
+        margin-top: 10svh;
+        background: black;
+        border-radius: 15px;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        animation: modalUp 3s;
+    }
+
+    .modal-header {
+        font-size: 3em;
+        margin-top: 2svh;
+        color: white;
+        text-align: center;
+        width: 100%;
+        text-decoration: underline;
+    }
+
+    .modal-header-container {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .close-modal {
+        top: 5px;
+        right: 5px;
+        font-size: 1.2em;
+    }
+
+    .modal-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .form-container {
+        width: 80vw;
+        margin-top: 2svh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .modal-input-name,
+    .modal-input-mail,
+    textarea {
+        width: 90%;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .modal-submit-btn{
+        height: 7svh;
+        padding: 5px;
+    }
+
+    .modal-image {
+        display: none;
+    }
+    .modal-image-bottom{
+        display: flex;
+        width: 25vw;
+        height: auto;
+        object-fit: cover;
+    }
+   
+}
+/* support modal ends here*/
